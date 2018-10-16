@@ -1,0 +1,7 @@
+{
+  "name": "HDionic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
