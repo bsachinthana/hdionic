@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+ <form [formGroup]="loginForm">
+  <ion-list>
+    <ion-item >
+      <ion-label position="floating">Registration No</ion-label>
+      <ion-input formControlName="un"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="pw"></ion-input>
+    </ion-item>
+    
+      <ion-button block (click)="login()">Log In</ion-button>
+
+</ion-list> 
+</form>
+{{loginForm.value | json}}
+</ion-content>
