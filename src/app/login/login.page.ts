@@ -29,9 +29,9 @@ export class LoginPage implements OnInit {
             // localStorage.setItem('currentUser', JSON.stringify(data.data));
             this.storage.set('currentUser', JSON.stringify(data.data)).then(res => {
               console.log(res);
-              console.log('success');
+              console.log('success saving user');
+              this.router.navigate(['view']);
             });
-            this.router.navigate(['view']);
           } else {
             if (data.message === 'USER_NOT_ACTIVE') {
               console.log('Your account is not active. Please check your mail for confirmation email');
