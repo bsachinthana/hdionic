@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { Storage } from '@ionic/storage';
+import { Observable, from } from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-view-uploads',
@@ -12,8 +15,10 @@ export class ViewUploadsPage implements OnInit {
   departments: any;
   dept: any;
   loading = false;
+  profile: any;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService,public storage: Storage,public router:Router) {
+    //this.profile=this.localStorage.get('currentUser');
     this.loading = true;
     this.dataService.getUploads().subscribe(api_data => {
       const data: any = api_data;
@@ -36,6 +41,12 @@ export class ViewUploadsPage implements OnInit {
       }
      });
   }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['login']);
+  }
+
   download(content: any) {
       const link = document.createElement('a');
       link.href = './api/file/' + content.fileId + '?fname=' + content.fileName;
