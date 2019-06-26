@@ -7,10 +7,10 @@ import { AdminGuard } from './helpers/AdminGuard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
-  { path: 'upload', loadChildren: './upload/upload.module#UploadPageModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'view', loadChildren: './view-uploads/view-uploads.module#ViewUploadsPageModule', canActivate: [AuthGuard] },
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
+  { path: 'upload', loadChildren: () => import('./upload/upload.module').then(m => m.UploadPageModule) },
+  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule) },
+  { path: 'view', loadChildren: () => import('./view-uploads/view-uploads.module').then(m => m.ViewUploadsPageModule), canActivate: [AuthGuard] },
 ];
 
 @NgModule({
