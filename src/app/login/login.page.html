@@ -14,12 +14,15 @@
   
     <ion-item>
       <ion-label position="floating">Password</ion-label>
-      <ion-input formControlName="pw"></ion-input>
+      <ion-input required type="Password" formControlName="pw"></ion-input>
     </ion-item>
     
       <ion-button block (click)="login()">Log In</ion-button>
 
 </ion-list> 
 </form>
+<ion-label>
+    <h3>New to file-share?<a herf="" [routerLink]="['/register']"> register</a>.</h3>
+</ion-label>
 {{loginForm.value | json}}
 </ion-content>
