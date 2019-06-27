@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { DataService } from './../data.service';
-import { map } from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs';
 
