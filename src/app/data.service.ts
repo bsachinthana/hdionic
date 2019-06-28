@@ -51,11 +51,15 @@ export class DataService {
   getConfirmation(id: string, token: string) {
     return this.http.post(this.prefix + '/api/user/confirmation', { 'id': id, 'token': token });
   }
+
   validate() {
     return this.http.get(this.prefix + '/api/user/validate');
   }
 
   getAllSubjects() {
     return this.http.get(this.prefix + '/api/util/allSubjects');
+  }
+  getProfile() {
+    return this.http.get(this.prefix + '/api/user/profile');
   }
 }

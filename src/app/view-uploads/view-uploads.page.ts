@@ -19,29 +19,26 @@ export class ViewUploadsPage implements OnInit {
 
   constructor(private dataService: DataService, public storage: Storage, public router: Router) {
     this.profile = this.storage.get('currentUser');
-    if (this.profile.courses.length > 0 ) {
-      this.loading = true;
-      this.dataService.getUploads().subscribe(api_data => {
-        const data: any = api_data;
-        if (!(data.status === 500)) {
-          this.files = data.data;
-          this.loading = false;
-        } else {
-          alert(data.message);
-        }
-      });
-      this.dataService.getDepartments().subscribe(api_data => {
-        const data: any = api_data;
-        if (!(data.status === 500)) {
-          this.departments = api_data;
-          console.log(this.departments);
-        } else {
-          alert(data.status);
-        }
-      });
-    } else {
-
-    }
+    // if (this.profile.courses.length > 0 ) {
+    this.loading = true;
+    this.dataService.getUploads().subscribe(api_data => {
+      const data: any = api_data;
+      if (!(data.status === 500)) {
+        this.files = data.data;
+        this.loading = false;
+      } else {
+        alert(data.message);
+      }
+    });
+    this.dataService.getDepartments().subscribe(api_data => {
+      const data: any = api_data;
+      if (!(data.status === 500)) {
+        this.departments = api_data;
+        console.log(this.departments);
+      } else {
+        alert(data.status);
+      }
+    });
   }
 
   logout() {
@@ -68,6 +65,6 @@ export class ViewUploadsPage implements OnInit {
        }
       });
    } */
-  ngOnInit() {}
+  ngOnInit() { }
 
 }
