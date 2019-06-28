@@ -1,5 +1,5 @@
 <ion-row>
-  <ion-col size="6">
+  <ion-col>
     <ion-card *ngFor="let yr of subjects">
       <ion-card *ngFor="let subj of yr.subjects">
         <ion-card-header>
@@ -8,9 +8,9 @@
         <ion-list>
           <ion-item *ngFor="let course of subj.courses">
             <ion-label text-wrap>
-              <ion-text>
+              <h3>
                 {{course.name}}
-              </ion-text>
+              </h3>
               <ion-text text-muted>
                 {{course.code}}
               </ion-text>
