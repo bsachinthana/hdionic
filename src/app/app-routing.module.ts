@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'upload', loadChildren: './upload/upload.module#UploadPageModule', canActivate: [AuthGuard, AdminGuard] },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'view', loadChildren: './view-uploads/view-uploads.module#ViewUploadsPageModule', canActivate: [AuthGuard] },
-  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
+  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
+
 ];
 
 @NgModule({

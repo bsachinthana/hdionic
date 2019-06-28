@@ -54,4 +54,8 @@ export class DataService {
   validate() {
     return this.http.get(this.prefix + '/api/user/validate');
   }
+
+  getProfile(){
+    return this.http.get(this.prefix + '/api/user/profile');
+  }
 }

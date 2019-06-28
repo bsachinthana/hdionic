@@ -19,7 +19,7 @@ export class ViewUploadsPage implements OnInit {
 
   constructor(private dataService: DataService, public storage: Storage, public router: Router) {
     this.profile = this.storage.get('currentUser');
-    if (this.profile.courses.length > 0 ) {
+    //if (this.profile.courses.length > 0 ) {
       this.loading = true;
       this.dataService.getUploads().subscribe(api_data => {
         const data: any = api_data;
@@ -39,9 +39,8 @@ export class ViewUploadsPage implements OnInit {
           alert(data.status);
         }
       });
-    } else {
-
-    }
+   // } else {
+     
   }
 
   logout() {
