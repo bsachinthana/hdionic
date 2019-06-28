@@ -1,0 +1,17 @@
+ion-grid,ion-row{
+    height:100% !important;
+}
+
+ion-col h2, ion-label h3,ion-text{
+    display: block;
+    text-align: center;
+    padding-top: 0.5em;
+}
+
+#errorMsg{
+    background-color: rgb(245, 47, 47);
+    display: block;
+    padding:10px 0px;
+    color:white;
+    text-align: center;
+}
