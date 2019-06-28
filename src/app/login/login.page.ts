@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
+  errorMsg = '';
   constructor(private fb: FormBuilder, public dataService: DataService, public storage: Storage, public router: Router) {
   }
 
@@ -22,27 +23,24 @@ export class LoginPage implements OnInit {
   }
 
   login() {
+    this.errorMsg = '';
     this.dataService.login(this.loginForm.value)
       .subscribe(
         api_data => {
           const data: any = api_data;
-          if (data.status === 200) {
-            // localStorage.setItem('currentUser', JSON.stringify(data.data));
-            this.storage.set('currentUser', JSON.stringify(data.data)).then(res => {
-              console.log(res);
-              console.log('success saving user');
-              this.router.navigate(['view']);
-            });
-          } else {
-            if (data.message === 'USER_NOT_ACTIVE') {
-              console.log('Your account is not active. Please check your mail for confirmation email');
-            } else {
-              console.log(data.message);
-            }
-          }
+          // localStorage.setItem('currentUser', JSON.stringify(data.data));
+          this.storage.set('currentUser', JSON.stringify(data.data)).then(res => {
+            console.log(res);
+            console.log('success saving user');
+            this.router.navigate(['view']);
+          });
         },
         error => {
-          console.log(error);
+          if (error.status === 400) {
+            this.errorMsg = error.error;
+          } else {
+            alert(error.error);
+          }
         });
   }
 
