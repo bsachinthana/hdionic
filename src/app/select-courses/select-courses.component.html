@@ -1,5 +1,23 @@
-<ion-grid>
-  <ion-row>
-    
-  </ion-row>
-</ion-grid>
+<ion-row>
+  <ion-col size="6">
+    <ion-card *ngFor="let yr of subjects">
+      <ion-card *ngFor="let subj of yr.subjects">
+        <ion-card-header>
+          {{subj.name}}
+        </ion-card-header>
+        <ion-list>
+          <ion-item *ngFor="let course of subj.courses">
+            <ion-label text-wrap>
+              <ion-text>
+                {{course.name}}
+              </ion-text>
+              <ion-text text-muted>
+                {{course.code}}
+              </ion-text>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-card>
+  </ion-col>
+</ion-row>

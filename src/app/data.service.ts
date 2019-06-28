@@ -6,7 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 // 'http://b54fileshare.herokuapp.com'
 export class DataService {
   prefix: String = 'http://localhost:3000';
- // prefix: String = 'http://b54fileshare.herokuapp.com';
+  // prefix: String = 'http://b54fileshare.herokuapp.com';
   result: any;
 
   constructor(private http: HttpClient) { }
@@ -17,7 +17,7 @@ export class DataService {
     const newHeaders = new HttpHeaders().delete('content-type');
     // return this.http.request('post', this.prefix + '/api/user/register', {body: user , headers : newHeaders, reportProgress : true});
 
-    return this.http.post(this.prefix + '/api/user/register', user, { reportProgress: true, observe: 'events', headers : newHeaders });
+    return this.http.post(this.prefix + '/api/user/register', user, { reportProgress: true, observe: 'events', headers: newHeaders });
   }
   upload(content) {
     return this.http.post(this.prefix + '/api/upload', content, { reportProgress: true, observe: 'events' });
@@ -53,5 +53,9 @@ export class DataService {
   }
   validate() {
     return this.http.get(this.prefix + '/api/user/validate');
+  }
+
+  getAllSubjects() {
+    return this.http.get(this.prefix + '/api/util/allSubjects');
   }
 }

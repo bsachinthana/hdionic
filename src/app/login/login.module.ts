@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { LoginPage } from './login.page';
 import { Storage } from '@ionic/storage';
+import { SelectCoursesComponent } from '../select-courses/select-courses.component';
 
 const routes: Routes = [
   {

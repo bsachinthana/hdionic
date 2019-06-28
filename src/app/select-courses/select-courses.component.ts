@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-select-courses',
@@ -6,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./select-courses.component.scss'],
 })
 export class SelectCoursesComponent implements OnInit {
-
-  constructor() {}
-
+  subjects;
+  constructor(private ds: DataService) {
+    this.ds.getAllSubjects().subscribe(sub => {
+      this.subjects = sub;
+    }, err => {
+      alert(err);
+      console.log(err.message);
+    });
+  }
   ngOnInit() {}
-
 }
