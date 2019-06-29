@@ -1,26 +1,68 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>View Uploads</ion-title>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>Welcome to Hanthana Drive</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col col-sm-12 col-md-6>
-          <p *ngIf="loading===true">Loading...</p>
-          <ion-card  *ngFor="let file of files">
-              <ion-card-header>
-                  <ion-card-title>{{file.title}}</ion-card-title>
-                  <span>{{file.course.subject}} > {{file.course.code}} : {{file.course.name}}</span>
-              </ion-card-header>
-              <ion-card-content>
-                  <p>{{file.desc}}</p>
-              </ion-card-content>
-            <ion-button fill="block" (click)="download(file.content)">download</ion-button>
-          </ion-card>
+      <ion-col size-md="3">
+        <ion-list lines="none">
+          <ion-list-header>
+            Filter By Course
+          </ion-list-header>
+          <ion-item button>
+            <ion-label>
+              MT312
+            </ion-label>
+          </ion-item>
+          <ion-item button>
+            <ion-label>
+              MT413
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-list>
+          <ion-list-header>
+            Content Type
+          </ion-list-header>
+          <ion-item>
+            <ion-label>
+              Past Papers
+            </ion-label>
+            <ion-checkbox></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              Notes / Tutes
+            </ion-label>
+            <ion-checkbox></ion-checkbox>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              Discussions
+            </ion-label>
+            <ion-checkbox></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size-sm="12" size-md="6">
+        <p *ngIf="loading===true">Loading...</p>
+        <ion-card *ngFor="let file of files" nopadding>
+          <ion-card-header>
+            <ion-card-title>{{file.title}}</ion-card-title>
+            <span>{{file.course.subject}} > {{file.course.code}} : {{file.course.name}}</span>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{file.desc}}</p>
+          </ion-card-content>
+          <ion-button fill="outline" expand="block" (click)="download(file.content)">
+            <ion-icon name="download">download</ion-icon>
+          </ion-button>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
- 
+
 </ion-content>

@@ -10,6 +10,12 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+$font-family-base: "Muli", sans-serif !important;
+
+:root{
+   --ion-font-family:'Muli',sans-serif;
+}
 html,body{
     height:100%;
 }
