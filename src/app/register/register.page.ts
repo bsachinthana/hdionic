@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
@@ -13,19 +13,21 @@ import { HttpEventType } from '@angular/common/http';
 
 
 export class RegisterPage implements OnInit {
+  @ViewChild('fileInput') file: ElementRef;
 
-  visibleTab: Number = 1;
+  visibleTab = 1;
   myForm: FormGroup;
   progress = null;
   selectedFile = null;
-  
-  constructor(private fb: FormBuilder, public dataService: DataService, public storage: Storage, public router: Router) {  
+
+  constructor(private fb: FormBuilder, public dataService: DataService, public storage: Storage, public router: Router) {
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.myForm = this.fb.group({
       name: ['', [Validators.required]],
       card: ['', [Validators.required]],
+      sno: ['', [Validators.required]],
       un: ['', [Validators.required]],
       tel: ['', [Validators.required]],
       email: ['', [Validators.required]],
@@ -55,10 +57,15 @@ export class RegisterPage implements OnInit {
           if (event.status === 200) {
             this.visibleTab = 200;
           }
+          this.progress = null;
         }
         console.log(event);
       });
     }
+  }
+
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
   }
 
 }
